@@ -18,23 +18,34 @@ namespace Chill_Practice.Services
             return result;
         }
 
-        private void CombinationSum(int[] cand, int target, int sum, int i, List<int> comb, List<IList<int>> result)
+        private void CombinationSum(int[] candidate, int target, int sum, int arrayLocation, List<int> combo, List<IList<int>> result)
         {
+            // Check if the current set of possibilities is greater than the target passed in
             if (sum > target)
-                return;
-            if (sum == target)
             {
-                result.Add(comb.ToList());
                 return;
             }
-            while (i < cand.Length)
+
+            // If the current combination's sum equals the target add it to the result set and continue looking for more combinations
+            if (sum == target)
             {
-                sum += cand[i];
-                comb.Add(cand[i]);
-                CombinationSum(cand, target, sum, i, comb, result);
-                sum -= cand[i];
-                comb.RemoveAt(comb.Count - 1);
-                i++;
+                result.Add(combo.ToList());
+                return;
+            }
+
+            while (arrayLocation < candidate.Length)
+            {
+                // ADd the current candidate to the current combo to check if it will add up to the target
+                sum += candidate[arrayLocation];
+                combo.Add(candidate[arrayLocation]);
+
+                // Create
+                CombinationSum(candidate, target, sum, arrayLocation, combo, result);
+
+                // After going through the possibilities lets backtrack and see if we can make more matching combinations from where we currently are
+                sum -= candidate[arrayLocation];
+                combo.RemoveAt(combo.Count - 1);
+                arrayLocation++;
             }
         }
     }

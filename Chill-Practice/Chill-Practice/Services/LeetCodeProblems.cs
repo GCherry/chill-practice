@@ -1,14 +1,22 @@
-﻿using Chill_Practice.Interfaces;
-using System;
+﻿using Chill_Practice.DomainObjects;
+using Chill_Practice.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Chill_Practice.Services
 {
     public class LeetCodeProblems : ILeetCodeProblems
     {
+        public bool Problem100_IsSameTree(TreeNode p, TreeNode q)
+        {
+            if (Equals(p, null) || Equals(q, null))
+            {
+                return Equals(q, p);
+            }
+
+            return Equals(p.val, q.val) && Problem100_IsSameTree(p.left, q.left) && Problem100_IsSameTree(p.right, q.right);
+        }
+
         public IList<IList<int>> Problem39_CombinationSum(int[] candidates, int target)
         {
             List<IList<int>> result = new List<IList<int>>();
@@ -50,3 +58,5 @@ namespace Chill_Practice.Services
         }
     }
 }
+
+

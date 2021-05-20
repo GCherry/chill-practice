@@ -19,8 +19,8 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ./chill-practice
+      working-directory: ./Chill-Practice
     - name: Build
       run: dotnet build --no-restore
-      working-directory: ./chill-practice
+      working-directory: ./Chill-Practice
 

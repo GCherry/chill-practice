@@ -6,6 +6,7 @@
 # Log files
 log.json
 log.txt
+log.log
 
 # User-specific files
 *.rsuser
